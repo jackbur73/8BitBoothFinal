@@ -1,43 +1,15 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 04/23/2023 03:42:42 PM
--- Design Name: 
--- Module Name: Left_Shift - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity LeftShift is
-  Port (x : in std_logic_vector(7 downto 0);
+  Port (x : in std_logic_vector(7 downto 0); -- Takes in a 8 bit and spits out a 8 bit based on a 3 bit input
        flag : in std_logic_vector(2 downto 0);
         y : out std_logic_vector(7 downto 0));
 end LeftShift;
 
-architecture Behavioral of LeftShift is
+architecture Behavioral of LeftShift is -- function call
 component multiplexer
 Port (x, y, sel : in std_logic;
         output : out std_logic);
@@ -48,7 +20,7 @@ signal left_shift_flagt : std_logic_vector(2 downto 0);
 
 begin
 
-U1: multiplexer port map('0', x(0), flag(2), temp(0));
+U1: multiplexer port map('0', x(0), flag(2), temp(0)); -- port mapping 
 U2: multiplexer port map('0', x(1), flag(2), temp(1));
 U3: multiplexer port map('0', x(2), flag(2), temp(2));
 U4: multiplexer port map('0', x(3), flag(2), temp(3));
